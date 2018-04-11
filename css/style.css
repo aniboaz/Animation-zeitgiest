@@ -404,3 +404,9 @@ animation:swing-out-top-bck .45s cubic-bezier(.6,-.28,.735,.045) both}
 .button.right{width:24px;height: 28px;padding: 0}
 
 .filters{display:none;}
+
+@media only screen and (min-width : 1300px) {
+    .container {
+      max-width: 1300px;
+    }
+}
