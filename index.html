@@ -1,82 +1,179 @@
 <!DOCTYPE html>
-<html>
-<head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><!--todo use vue instead-->
+<html lang="en" >
+
+<head>
   <meta charset="UTF-8">
   <title>Animation Zietgiest</title>
-  <!-- CSS Files -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link href="./css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-  <!-- Custom styles for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Eczar:700" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css'>
+      <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+<style lang="css">
+/*spinner thanks to https://projects.lukehaas.me/css-loaders/*/
+.spinner,
+.spinner:before,
+.spinner:after {
+  border-radius: 50%;
+}
+.spinner {
+  color: #255ee3;
+  font-size: 11px; text-indent: -99999em;
+  margin: 55px auto;
+  position: fixed;
+  width: 10em; height: 10em;
+  top: calc((50vh - 10em));
+left: calc((50vw - 10em));
+  box-shadow: inset 0 0 0 1em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.spinner:before,
+.spinner:after {
+  position: absolute;
+  content: '';
+}
+.spinner:before {
+  width: 5.2em;
+  height: 10.2em;
+  background: #ffffff;
+  border-radius: 10.2em 0 0 10.2em;
+  top: -0.1em;
+  left: -0.1em;
+  -webkit-transform-origin: 5.2em 5.1em;
+  transform-origin: 5.2em 5.1em;
+  -webkit-animation: load2 1.5s infinite ease 1.5s;
+  animation: load2 1.5s infinite ease 1.5s;
+}
+.spinner:after {
+  width: 5.2em;
+  height: 10.2em;
+  background: #ffffff;
+  border-radius: 0 10em 10.2em 0;
+  top: -0.1em;
+  left: 5.1em;
+  -webkit-transform-origin: 0px 5.1em;
+  transform-origin: 0px 5.1em;
+  -webkit-animation: load2 1.5s infinite ease-in-out;
+  animation: load2 1.5s infinite ease-in-out;
+}
+@-webkit-keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+</style>
+<main id="app"><div class="spinner" title="Loading..." v-if="false">Loading...</div>
+  <section class="hero is-light">
+  <div class="hero-body" v-cloak>
+    <div class="container">
+        <h1 class="title cool-headline" data-text="Animation Zietgiest">Animation Zietgiest</h1><button class="button is-pulled-right	"  id="show-modal" @click="showModal = true"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#384047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="about-button" color="#384047" data-reactid="656"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
+        </button>
 
-    <div class="wrapper" role="main">
-            <div class="container" >
-                <div class="content-center jumbotron"><h2 class="cool-headline" data-text="Animation Zietgiest">Animation Zietgiest</h2>
-                  <p>A collection of free online animation tools</p><button class="button right"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#384047" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="about-button" color="#384047" data-reactid="656"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg> </button>
-<p>
-<small>
-Version<sup> 3.0 </sup>created & curated by <a href="http://www.aniboaz.co.il">Boaz</a></small>
-</p>
+
+      <h3 class="subtitle">
+        <p>A collection of free online animation tools</p>
+      </h3><p class="is-small">
+      Version<sup> 4.0 </sup>created & curated by <a class="has-text-link" href="http://www.aniboaz.co.il">Boaz L.</a></p> <div class="search-wrapper">
+    <p>
+      <div class="field" style="max-width:500px;margin-top:12px;">
+        <div class="control has-icons-right">
+          <input class="input" id="mySearch"  ref="mySearch" v-model="searchQuery" placeholder="Search descreption...">
+        <span class="icon is-right"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+        </div>
+      </div>
+  <!-- use the modal component, pass in the prop -->
+<!-- {{index}} -->
 
 
-                  <menu class="filters" role="menu">
-                    <div><input type="text" class="quicksearch" placeholder="Search" /><button class="button"><i>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    </i></button></div>
+</div>
+<modal v-if="showModal" @close="showModal = false"/>
+<div class="about modal fade" id="myModal" tabindex="-1" role="dialog"  aria-hidden="false">
+    <div class="modal-background">  </div></div>
+</section>
+<section class="has-background-grey-lighter" v-cloak><div class="container">
+    <div class="bottom row">
+      <masonry :cols="{default: 4, 1000: 3, 700: 2, 400: 1}"
+        :gutter="12"
+        >
+           <template v-for="entry in filterItems(entries)">
+             <transition name="bounce" transition="stagger" stagger="20" v-enter-active>
+             <div class="entry card"  :key="entry.gsx$title.$t" >
+             <div class="card-image"><img :src="transformation+entry.gsx$url.$t" class="image" v-once alt="Placeholder image"/></div>
+            <div class="card-content">
+              <a class="has-text-link" :href="entry.gsx$url.$t" target="_blank"><h2 class="title is-3">{{entry.title.$t}}</h2> </a><p class="content is-small" >{{entry.gsx$descreption.$t}}</p>
+             <span class="tag is-light">
+                        {{entry.gsx$category.$t}} </span> <span class="tag is-light">{{entry.gsx$usage.$t}}</span>
+              </div><!-- -->
+              <footer class="card-footer">
+                <a :href="entry.gsx$github.$t" target="_blank" class="card-footer-item has-text-link"><icon-github></icon-github> github
+                </a>
+                <a :href="entry.gsx$url.$t" target="_blank" class="card-footer-item has-text-link"><img class="favico" :src="favico+entry.gsx$url.$t">  website</a>
+  </a>
+</footer>
+</div></transition>
 
-                    <div class="button-group" data-filter-group="category"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg><span>categories:</span>
-                      <button class="button is-checked" data-filter="">any</button>
-                      <button class="button" data-filter=".svg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><span>svg</span></button>
-                      <button class="button" data-filter=".css"><svg class="css-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"  d="M8.76 1l10.055 112.883 45.118 12.58 45.244-12.626 10.063-112.837h-110.48zm89.591 25.862l-3.347 37.605.01.203-.014.467v-.004l-2.378 26.294-.262 2.336-28.36 7.844v.001l-.022.019-28.311-7.888-1.917-21.739h13.883l.985 11.054 15.386 4.17-.004.008v-.002l15.443-4.229 1.632-18.001h-32.282999999999994l-.277-3.043-.631-7.129-.331-3.828h34.748999999999995l1.264-14h-52.926l-.277-3.041-.63-7.131-.332-3.828h69.281l-.331 3.862z"/></svg><span>css</span></button>
-                      <button class="button" data-filter=".js"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="js-icon"><path fill="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" d="M2 1v125h125V1H2zm66.1 106.5a14.8 14.8 0 0 1-9.4 7.4c-6.3 1.5-12.3.6-16.8-2-3-1.9-5.3-4.7-6.9-8l9.6-5.8.6 1.1a10 10 0 0 0 4.3 4.5c2 .7 6.5 1.1 8.2-2.4 1-1.9.7-7.7.7-14.1V58h11.8v32.2c0 6.5.6 12.4-2 17.3zm48.6-3.3c-4 14-26.8 14.4-35.8 5.2-2-2.2-3.2-3.3-4.3-5.8l9.5-5.5c2.6 4 5 6 9.1 7 5.8.7 11.6-1.3 10.3-7.4-1.3-5-11.8-6.2-18.9-11.6a16.4 16.4 0 0 1-3-23.3c2-2.5 5.4-4.3 9-5.2l3.6-.5c7-.1 11.5 1.7 14.8 5.3.9 1 1.6 2 3 4l-9.2 6c-1.1-2.5-3-4-5-4.8-3.2-.9-7.2.1-8 3.5-.3 1-.2 2 .2 3.6 1.3 3 5.6 4.2 9.4 6 11 4.4 14.8 9.2 15.7 15 .9 4.8-.2 8-.4 8.5z"/></svg><span>javascript</span></button>
-                      <button class="button" data-filter=".3d"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="3d"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path><polyline points="2.32 6.16 12 11 21.68 6.16"></polyline><line x1="12" y1="22.76" x2="12" y2="11"></line></svg><span>3d</span></button>
-                      </div>
+</template>
+</masonry>
 
-                    <div class="button-group" data-filter-group="usage"><span>Usage:</span>
-                      <button class="button is-checked" data-filter="">any</button>
-                      <button  class="button" data-filter=".code"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> code library</button>
-                      <button class="button"  data-filter=".tool"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tool"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg> Tool
-                  </button>
-                      <button  class="button" data-filter=".plugin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="plugin-icon"><path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"></path><polyline points="2.32 6.16 12 11 21.68 6.16"></polyline><line x1="12" y1="22.76" x2="12" y2="11"></line><line x1="7" y1="3.5" x2="17" y2="8.5"></line></svg> plugin
-                  </button>
-                  </menu>
+    </div>
+</section>
+  </main>
 
-<div class="about modal fade" id="myModal" tabindex="-1" role="dialog"  aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header justify-content-center">
-                        <button class="button right about-button" type="button" data-dismiss="modal" aria-hidden="true">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
-                        </button>
-                        <h2 class="title title-up">About this project</h2>
-                    </div>
-                    <div class="modal-body">
-                      <H3>This <sub>(side-)</sub> project curates resources for web-animation, used for interaction or webdesign. I cuurently dont include mobile animation related resources.</H3>
-                      <p>I made this Side-project list after finding lots of resources on the web and finding that i can <a href="https://codepen.io/DonKarlssonSan/post/using-google-sheets-as-a-backend">pull content from a google sheet.</a>
-                      </P>
-                      <P>you can comment or suggest in the public google sheet here. Tools Ive used to make it : <a href="https://isotope.metafizzy.co/">isotope</a>, <a href="https://imagesloaded.desandro.com/">images-loaded</a>, <a href="https://cloudinary.com">cloudinary's url2png</a>, <a href="https://codepen.io/allurewebsolutions/details/grWVYb">this pen</a> for getting data from google sheet, <a href="http://github.hubspot.com/pace/docs/welcome/">pace.js</a>, <a href="https://feather.netlify.com/">Feather icons </a></p>
-                      <p>
-                      <small> Version<sup> 3.0 </sup>created & curated by <a href="http://www.aniboaz.co.il">Boaz</a></small></p>
-                      <p>feedbacks and <a href="https://github.com/aniboaz/Animation-zeitgiest"> pullrequests</a> are welcome!</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="about-button" data-dismiss="modal">Close me</button>
-                    </div>
+    <!-- template for the modal component -->
+    <script type="text/x-template" id="modal-template">
+      <transition name="modal">
+        <div class="modal-mask" @click="$emit('close')">
+          <div class="modal-wrapper">
+              <div class="modal-card">
+          <header class="modal-card-head">
+                    <button class="button is-right is-light is-light about-button" type="button" data-dismiss="modal" aria-hidden="true" @click="$emit('close')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                    </button>
+                    <h1 class="title title-up">About this project</h1>
+                </header>
+                <div class="modal-card-body">
+                  <H3>This <sub>(side-)</sub>project curates resources for web-animation, used for interaction or web-design. I cuurently don't include mobile animation related resources. :(</H3>
+                  <p>I made this Side-project list after finding lots of resources on the web and finding that i can <a class="has-text-link" href="https://codepen.io/DonKarlssonSan/post/using-google-sheets-as-a-backend">pull content from a google sheet.</a>
+                  </p>
+                  <p>you can comment or suggest in the public google sheet here. Tools Ive used to make it : <a class="has-text-link" href="https://isotope.metafizzy.co/">isotope</a>, <a href="https://imagesloaded.desandro.com/">images-loaded</a>, <a class="has-text-link" href="https://cloudinary.com">cloudinary's url2png</a>, <a class="has-text-link" href="https://codepen.io/allurewebsolutions/details/grWVYb">this pen</a> for getting data from google sheet, <a class="has-text-link" href="http://github.hubspot.com/pace/docs/welcome/">pace.js</a>,
+                    <a class="has-text-link" href="https://feather.netlify.com/">Feather icons </a></p>
+                  <p>
+                  <small> Version<sup> 3.0 </sup>created & curated by <a href="http://www.aniboaz.co.il">Boaz</a></small></p>
+                  <p>feedbacks and <a class="has-text-link" href="https://github.com/aniboaz/Animation-zeitgiest"> pullrequests</a> are welcome!</p>
+                </div>
+                <div class="modal-card-foot">
+                    <button  class="modal-default-button is-light" @click="$emit('close')">OK, good to know</button>
                 </div>
             </div>
+          </div>
         </div>
-  </menu>
-   </div>
-  <ol id="list" class="results" role="list">
-  </ol>
+      </transition>
+    </script>
 </body>
+<!--script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js'></script>
+<script src="https://unpkg.com/vue-masonry-css"></script>
+<script  src="js/index.js"></script>
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Eczar:700" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
 
-<script src='https://npmcdn.com/isotope-layout@3.0/dist/isotope.pkgd.min.js'></script>
-<script src='https://npmcdn.com/imagesloaded@4/imagesloaded.pkgd.js'></script>
-<script src="./js/pace.min.js"></script>
-  <script src="./js/index.js"></script>
-  </html>
+</html>
