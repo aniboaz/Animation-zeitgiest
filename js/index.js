@@ -67,12 +67,3 @@ var blog = new Vue({
 
   }
 });
-
-
-//todo add search like
-// https://codesandbox.io/s/mqm3o65nzy ?
-//https://github.com/vuejs/vue/issues/2756#issuecomment-215505604
-// or https://fengyuanchen.github.io/vue-feather/
-// or https://codepen.io/AndrewThian/pen/QdeOVa
-//todo filter list by cat.
-//todo add modal https://jsfiddle.net/yyx990803/mwLbw11k
