@@ -115,7 +115,7 @@ left: calc((50vw - 10em));
         :gutter="12"
         >
            <template v-for="entry in filterItems(entries)">
-             <transition name="bounce" transition="stagger" stagger="20" v-enter-active>
+             <transition name="bounce" transition="stagger" stagger="20" appear>
              <div class="entry card"  :key="entry.gsx$title.$t" >
              <div class="card-image"><img :src="transformation+entry.gsx$url.$t" class="image" v-once alt="Placeholder image"/></div>
             <div class="card-content">
