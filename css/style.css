@@ -19,18 +19,12 @@ button.is-checked,button:active,button:checked,button:focus{background-color:#25
 }
 .card:hover .card-image>img{opacity: 1}
 
+.card-footer a>svg, .card-footer a>img, .card-content .tag{
+    margin-right: 6px;
+}
+
 .row{padding-top: 4em; padding-bottom: 2em;}
-/*grid -
-.row{
-  display: flex;
-    flex-wrap: wrap;
-    max-width: 1354px;
-    }
 
-
-    .entry{flex-basis: calc((100% - 96px) / 4);
-    margin: 0 12px 30px;height: fit-content;}
-*/
 .entry{margin-bottom: 12px; box-shadow: 0 1rem 1rem -1rem rgba(10,10,10,.4);transition:ALL 200ms ease-in-out;
     transition-property: box-shadow,-webkit-transform;
     transition-property: box-shadow,transform;

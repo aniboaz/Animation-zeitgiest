@@ -59,7 +59,6 @@ var blog = new Vue({
       return entries.filter(function(entry) {
         let regex = new RegExp("(" + app.searchQuery + ")", "i");
         return entry.gsx$descreption.$t.match(regex);
-
       });
     }
     //functions

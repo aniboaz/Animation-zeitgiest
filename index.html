@@ -81,7 +81,8 @@ left: calc((50vw - 10em));
   }
 }
 </style>
-<main id="app"><div class="spinner" title="Loading..." v-if="false">Loading...</div>
+<main id="app"><div class="spinner" title="Loading..." v-if="entries === 'null'">Loading...</div>
+  <!--h1  v-if="entries === 'null'">s`hdjkasgfkagfsk</h1-->
   <section class="hero is-light">
   <div class="hero-body" v-cloak>
     <div class="container">
@@ -111,22 +112,22 @@ left: calc((50vw - 10em));
 </section>
 <section class="has-background-grey-lighter" v-cloak><div class="container">
     <div class="bottom row">
-      <masonry :cols="{default: 4, 1000: 3, 700: 2, 400: 1}"
+      <masonry :cols="{default: 4, 1300: 3, 820: 2, 420: 1}"
         :gutter="12"
         >
            <template v-for="entry in filterItems(entries)">
              <transition name="bounce" transition="stagger" stagger="20" appear>
-             <div class="entry card"  :key="entry.gsx$title.$t" >
+             <div class="entry card"  :key="entry.gsx$title.$t" v-once>
              <div class="card-image"><img :src="transformation+entry.gsx$url.$t" class="image" v-once alt="Placeholder image"/></div>
             <div class="card-content">
               <a class="has-text-link" :href="entry.gsx$url.$t" target="_blank"><h2 class="title is-3">{{entry.title.$t}}</h2> </a><p class="content is-small" >{{entry.gsx$descreption.$t}}</p>
-             <span class="tag is-light">
-                        {{entry.gsx$category.$t}} </span> <span class="tag is-light">{{entry.gsx$usage.$t}}</span>
+             <span class="tag is-light" v-if="entry.gsx$category.$t" v-for="category in (entry.gsx$category.$t.split(' '))">{{category}}</span>
+             <span class="tag is-light">{{entry.gsx$usage.$t}}</span>
               </div><!-- -->
               <footer class="card-footer">
-                <a :href="entry.gsx$github.$t" target="_blank" class="card-footer-item has-text-link"><icon-github></icon-github> github
+                <a :href="entry.gsx$github.$t" target="_blank" class="card-footer-item has-text-link"><icon-github></icon-github>github
                 </a>
-                <a :href="entry.gsx$url.$t" target="_blank" class="card-footer-item has-text-link"><img class="favico" :src="favico+entry.gsx$url.$t">  website</a>
+                <a :href="entry.gsx$url.$t" target="_blank" class="card-footer-item has-text-link"><img class="favico" :src="favico+entry.gsx$url.$t" v-once /> website</a>
   </a>
 </footer>
 </div></transition>
