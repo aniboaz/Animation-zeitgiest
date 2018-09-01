@@ -12,7 +12,7 @@ todo
 - [x] powered by <b>Vue</b>
 - [x] remove other dependencies like isotope
 - [ ] add filter for categories or tags to filter with the search <!--like https://codesandbox.io/s/mqm3o65nzy-->
-- [ ] split categories by spaces or commas to array
+- [x] split categories by spaces or commas to array
 - [ ] fix animation bugs with modal
 - [ ] fix first-time-load -whitescreen (add fade or effect to masonary grid when enter-active)
   </small>
