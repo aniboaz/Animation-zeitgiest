@@ -153,3 +153,8 @@ animation: fade .5s ease-in-out;
     opacity: 1;
   }
 }
+.progress::-webkit-progress-value {
+  transition: all 0.5s ease-in-out;
+}
+.progress{-moz-appearance: none;
+-webkit-appearance: none;}
