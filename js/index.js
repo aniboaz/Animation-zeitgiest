@@ -29,6 +29,7 @@ var app = new Vue({
         transformation: imageurl,
         favico: favicourl,
         loading: 0,
+        headline: 'Animation Zietgiest'
     },
 
     watch: {
@@ -47,14 +48,14 @@ var app = new Vue({
             xhr.open("GET", sheetUrl);
 
             xhr.onprogress = function() {
-                console.log('LOADING', xhr.readyState);
+                console.log('LOADING/parsing', xhr.readyState);
                 // doesnt work
                 self.loading = 45;
             }
             xhr.onload = function() {
                 self.entries = JSON.parse(xhr.responseText);
                 self.entries = self.entries.feed.entry;
-                console.log('OPENED', self.entries);
+                console.log('OPENED');
                 self.loading = 100;
             }
 

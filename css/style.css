@@ -17,7 +17,8 @@ button.is-checked,button:active,button:checked,button:focus{background-color:#25
 .card-image {
     background-color: #255EE3;
 }
-.card:hover .card-image>img{opacity: 1}
+.card-image>img{/*opacity: 1*/filter: url('#fover');transition: all 300ms ease-in-out;}
+.card:hover .card-image>img{opacity: 1;filter: none;}
 
 .card-footer a>svg, .card-footer a>img, .card-content .tag{
     margin-right: 6px;
@@ -30,7 +31,8 @@ button.is-checked,button:active,button:checked,button:focus{background-color:#25
     transition-property: box-shadow,transform;
     transition-property: box-shadow,transform,-webkit-transform;
     will-change: box-shadow,transform}
-/*CSS rules for flip animation */
+
+/*CSS animation */
 .entry, .modal-card{
     transform-style: preserve-3d;
   transform-origin: center; backface-visibility: hidden;
@@ -73,7 +75,7 @@ button.is-checked,button:active,button:checked,button:focus{background-color:#25
 }
 
 .modal-enter-active {
-animation: fade .5s ease-in-out;
+animation: f-out .5s ease-in-out;
 }
 [v-cloak]{display: none;}
 
@@ -81,8 +83,18 @@ animation: fade .5s ease-in-out;
   animation: bounce-in .6s ease-out;
 }
 
+ /*.bounce-leave-active:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 10;background-color:#255EE3;
+  animation-delay: .5s;animation: bounce-in 1s .6s ease;
+}*/
+
 .bounce-leave-active, .modal-leave-active  {
-  animation: fade .5s reverse;
+  animation: f-out .5s reverse;
 }
 @keyframes bounce-in {
   0% {
@@ -99,7 +111,7 @@ animation: fade .5s ease-in-out;
   }
 }
 
-@keyframes fade {
+@keyframes f-out {
   0% { ;
     opacity: 0;
   }
@@ -136,7 +148,7 @@ animation: fade .5s ease-in-out;
     opacity: 1;
   }
 }
-@keyframes slide-botton {
+@keyframes slide-bottom {
   0% {
     -webkit-transform: translateY(1000px);
             transform: translateY(1000px);
@@ -158,3 +170,29 @@ animation: fade .5s ease-in-out;
 }
 .progress{-moz-appearance: none;
 -webkit-appearance: none;}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+/*scrolling-header
+section.hero.is-light {
+    height: 80px;
+    position: fixed;
+      width: 100%;
+      z-index: 999;
+      top: 0;}
+    h1.title.cool-headline {
+    font-size: 25px;
+    content: 'Anim_List';}
+    .hero-body {
+    padding: 12px;
+}
+.hero p {
+    font-size: 12px;
+}
+.hero .container>* {
+    display: inline-block;
+}/*/
