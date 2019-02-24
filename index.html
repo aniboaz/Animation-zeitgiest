@@ -122,7 +122,9 @@
       </section>
       <section class="has-background-grey-lighter" v-cloak v-if="loading === 100">
         <div class="container">
-          <div class="bottom row">
+          <div class="bottom row">  <div class="title is-3 empty-state" v-if="!filterItems(entries).length">
+          <span  class="message-body">No results...</span>
+</div>
             <masonry :cols="{default: 4, 1300: 3, 820: 2, 420: 1}" :gutter="12">
               <template v-for="entry in filterItems(entries)">
              <transition name="bounce" transition="stagger" stagger="20" appear>
@@ -204,7 +206,7 @@
     </script>
 
   </body>
-  <script src='https://unpkg.com/vue@2.5.17/dist/vue.js'></script>
+  <script src='https://unpkg.com/vue@2.6.6/dist/vue.js'></script>
   <script src="https://unpkg.com/vue-masonry-css"></script>
   <script src="js/index.js"></script>
   <!-- fonts -->
