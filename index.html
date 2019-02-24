@@ -132,6 +132,7 @@
               <a class="has-text-link" :href="entry.gsx$url.$t" target="_blank" rel="noopener noreferrer"><h2 class="title is-3">{{entry.title.$t}}</h2> </a><p class="content is-small" >{{entry.gsx$descreption.$t}}</p><div class="tags">
              <span class="tag is-light" v-if="entry.gsx$category.$t" v-for="category in (entry.gsx$category.$t.split(' '))">{{category}}</span>
              <span class="tag is-light">{{entry.gsx$usage.$t}}</span>
+             <span class="tag is-success" v-if="entry.gsx$grade.$t">Recommended</span>
               </div></div><!-- -->
               <footer class="card-footer">
                 <a :href="entry.gsx$github.$t" target="_blank" rel="noopener noreferrer" class="card-footer-item has-text-link"><icon-github></icon-github>github
