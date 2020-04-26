@@ -55,10 +55,10 @@ button.is-checked,button:active,button:checked,button:focus{background-color:#25
   }
 
   .modal-wrapper {
-    display: table-cell;
-    vertical-align: middle;
-    height:100vh;
-  }
+      top: 1%;
+      position: inherit;
+      margin: auto;
+      width: inherit;}
 
   .modal-container {
     width: 300px;
